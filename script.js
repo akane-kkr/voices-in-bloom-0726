@@ -22,7 +22,7 @@ const EVENT_DATA = {
   // -------- バンド --------
   BAND_1_NAME: "SYM",
   BAND_1_TIME: "15:30",
-  BAND_1_DESC: "Vo.るー / Gt.しみしょう / Gt.のぶや / Ba.こまっきー / Dr.ともみん",
+  BAND_1_DESC: "Vo.るー / Gt.しみしょう / Gt.Vo.のぶや / Ba.こまっきー / Dr.ともみん",
 
   BAND_2_NAME: "Dang爵'z",
   BAND_2_TIME: "16:20",
