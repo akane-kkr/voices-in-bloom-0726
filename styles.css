@@ -156,6 +156,11 @@ ul    { list-style: none; }
   height: 90svh;
   min-height: 480px;
   max-height: 920px;
+
+  /* 左右余白・中央寄せ */
+  padding: 0 clamp(12px, 4vw, 48px);
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 /* picture 要素をコンテナに合わせてブロック表示 */
