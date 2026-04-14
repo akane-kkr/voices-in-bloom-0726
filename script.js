@@ -16,7 +16,7 @@ const EVENT_DATA = {
   ACCESS_SUB: "三宮駅より生田神社方面へ徒歩、ドンキホーテのある筋を山側へ徒歩5分",
 
   // チケット（事前/当日あるので調整）
-  TICKET_PRICE: "¥1,000 / ¥1,500",
+  TICKET_PRICE: "事前 ¥1,000<br>当日 ¥1,500",
   TICKET_NOTE: "+1 Drink",
 
   // -------- バンド --------
@@ -44,10 +44,17 @@ const EVENT_DATA = {
    ================================================================ */
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* data-key 属性でテキストを差し替え */
+  /* data-key 属性でテキストを差し替え
+     値に <br> などのHTMLタグが含まれる場合は innerHTML を使用する */
   Object.keys(EVENT_DATA).forEach((key) => {
+    const value = EVENT_DATA[key];
+    const usesHtml = /<[a-z]/i.test(value);
     document.querySelectorAll(`[data-key="${key}"]`).forEach((el) => {
-      el.textContent = EVENT_DATA[key];
+      if (usesHtml) {
+        el.innerHTML = value;
+      } else {
+        el.textContent = value;
+      }
     });
   });
 

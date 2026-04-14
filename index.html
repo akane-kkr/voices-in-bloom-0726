@@ -140,7 +140,7 @@
             <span class="ic-label">TICKET</span>
             <div class="ic-content">
               <p class="ic-main ic-price-val">
-                <span data-key="TICKET_PRICE">¥1,000 / ¥1,500</span>
+                <span data-key="TICKET_PRICE">事前 ¥1,000 / 当日 ¥1,500</span>
                 <span class="ic-drink" data-key="TICKET_NOTE">+ 1 Drink</span>
               </p>
             </div>
@@ -340,11 +340,25 @@
 
         <div class="ticket-price-wrap">
           <!-- TICKET_PRICE -->
-          <p class="ticket-price" data-key="TICKET_PRICE">¥1,000 / ¥1,500</p>
+          <div class="ticket-price-rows">
+            <div class="ticket-price-row">
+              <span class="ticket-price-label">事前</span>
+              <span class="ticket-price-val">¥1,000</span>
+            </div>
+            <div class="ticket-price-row">
+              <span class="ticket-price-label">当日</span>
+              <span class="ticket-price-val">¥1,500</span>
+            </div>
+          </div>
           <!-- TICKET_DRINK -->
           <p class="ticket-drink">+1 Drink</p>
           <!-- TICKET_NOTE -->
           <p class="ticket-note" data-key="TICKET_NOTE">※事前・当日ともに1ドリンクオーダー制</p>
+          <!-- TICKET_PAYMENT_NOTE -->
+          <p class="ticket-payment-note">
+            事前料金：前日までにお支払いの方<br>
+            当日料金：取り置きを含む当日支払いの方
+          </p>
         </div>
 
       </div>

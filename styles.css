@@ -294,6 +294,7 @@ ul    { list-style: none; }
 .ib-time .ib-value  { color: var(--color-text-on-dark); }
 .ib-venue .ib-value { color: var(--color-accent-teal); }
 .ib-ticket .ib-value { color: var(--color-accent-orange); }
+.ib-ticket [data-key="TICKET_PRICE"] { line-height: 1.4; }
 
 .ib-note {
   font-family: var(--font-body);
@@ -397,6 +398,7 @@ ul    { list-style: none; }
   align-items: baseline;
   gap: 0.4em;
 }
+.ic-price-val [data-key="TICKET_PRICE"] { line-height: 1.4; }
 .ic-price-val span:first-child {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 5vw, 2.5rem);
@@ -719,14 +721,33 @@ ul    { list-style: none; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.2em;
+  gap: 0.8em;
   margin: 1rem 0 2.5rem;
 }
-.ticket-price {
+.ticket-price-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+}
+.ticket-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4em;
+}
+.ticket-price-label {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 3.5vw, 1.6rem);
+  color: var(--color-accent-orange);
+  letter-spacing: 0.06em;
+  min-width: 2em;
+  text-align: right;
+  flex-shrink: 0;
+}
+.ticket-price-val {
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 14vw, 7.5rem);
   color: var(--color-accent-yellow);
-  line-height: 1;
+  line-height: 1.1;
 }
 .ticket-drink {
   font-family: var(--font-display);
@@ -739,6 +760,12 @@ ul    { list-style: none; }
   color: var(--color-text-muted);
   margin-top: 0.3em;
   line-height: 1.6;
+}
+.ticket-payment-note {
+  margin-top: 0.8rem;
+  font-size: clamp(0.72rem, 2.2vw, 0.84rem);
+  line-height: 1.8;
+  color: var(--color-text-muted);
 }
 .ticket-cta {
   display: flex;
