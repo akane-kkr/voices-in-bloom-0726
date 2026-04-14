@@ -173,7 +173,7 @@ ul    { list-style: none; }
 .hero-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   /* PC: hero-desktop.png 用。画像の構図に合わせて調整してください */
   object-position: center center;
   display: block;
@@ -877,7 +877,7 @@ ul    { list-style: none; }
     height: 75svh;
     min-height: 360px;
     max-height: 600px;
-    padding: 0;
+    padding: 0 10px;
     max-width: 100%;
   }
   /* hero-mobile.png はスマホ専用構図のため object-position 調整不要。
