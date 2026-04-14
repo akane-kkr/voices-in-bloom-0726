@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voices in Bloom — 2026.07.26 SUN</title>
+  <meta name="description" content="女性ボーカル3バンドによるライブイベント。2026年7月26日(日)、Live Bar Flat Five（神戸・三宮）。¥1,500 + 1Drink。">
+
+  <!-- Google Fonts: Japanese main / cursive accent -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&family=Pacifico&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ================================================================
+       SECTION 1: HERO
+       ヒーロー画像 + イベント情報バー
+       ================================================================ -->
+  <section id="hero">
+
+    <!-- ---- ヒーロー画像 ---- -->
+    <!--
+      PC:    assets/images/hero-desktop.png
+      スマホ: assets/images/hero-mobile.png  (768px 以下で切り替え)
+    -->
+    <div class="hero-img-wrap">
+      <picture>
+        <source
+          media="(max-width: 768px)"
+          srcset="assets/images/hero-mobile.png"
+        >
+        <img
+          src="assets/images/hero-desktop.png"
+          alt="Voices in Bloom — Three Female Vocal Bands in Live"
+          class="hero-img"
+        >
+      </picture>
+      <!-- 画像が未配置の場合のフォールバック -->
+      <div class="hero-fallback" aria-hidden="true">
+        <p class="hf-title">Voices<br><em>in</em><br>Bloom</p>
+        <p class="section-sub" data-key="EVENT_SUBTITLE">
+          Four Vocal Bands in Live Session
+        </p>
+      </div>
+    </div>
+
+    <!-- ---- イベント情報バー（ヒーロー直下）---- -->
+    <div class="hero-infobar">
+      <div class="infobar-inner">
+
+        <div class="infobar-main">
+          <!-- EVENT_DATE -->
+          <div class="ib-block ib-date">
+            <span class="ib-label">Date</span>
+            <span class="ib-value" data-key="EVENT_DATE">2026.07.26 SUN</span>
+          </div>
+
+          <div class="ib-sep" aria-hidden="true"></div>
+
+          <!-- OPEN_TIME / START_TIME -->
+          <div class="ib-block ib-time">
+            <span class="ib-label">Open / Start</span>
+            <span class="ib-value">
+              <span data-key="OPEN_TIME">15:00</span>
+              &thinsp;/&thinsp;
+              <span data-key="START_TIME">15:30</span>
+            </span>
+          </div>
+
+          <div class="ib-sep" aria-hidden="true"></div>
+
+          <!-- VENUE_NAME -->
+          <div class="ib-block ib-venue">
+            <span class="ib-label">Venue</span>
+            <span class="ib-value" data-key="VENUE_NAME">Live Bar Flat Five</span>
+          </div>
+
+          <div class="ib-sep" aria-hidden="true"></div>
+
+          <!-- TICKET_PRICE -->
+          <div class="ib-block ib-ticket">
+            <span class="ib-label">Ticket</span>
+            <span class="ib-value">
+              <span data-key="TICKET_PRICE">¥1,000 / ¥1,500</span>
+              <span class="ib-note" data-key="TICKET_NOTE">+ 1 Drink</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ================================================================
+       SECTION 2: ABOUT
+       ================================================================ -->
+  <section id="about">
+    <div class="about-inner container">
+
+      <div class="about-text-col fade-in">
+        <p class="section-eyebrow">About the Event</p>
+        <h2 class="about-heading">
+          夏の午後に花開く歌声。
+        </h2>
+        <p class="about-body">
+          3組のバンドが一夜限りのステージに集結。<br>
+          それぞれの個性が神戸・三宮 Flat Fiveに響きます。
+        </p>
+        <div class="about-tags">
+          <span class="tag"># 夏ライブ</span>
+          <span class="tag"># 神戸・三宮</span>
+        </div>
+      </div>
+
+      <div class="about-info-col fade-in">
+        <div class="info-card">
+          <div class="ic-row ic-date">
+            <span class="ic-label">DATE</span>
+            <div class="ic-content">
+              <p class="ic-main" data-key="EVENT_DATE">2026.07.26 SUN</p>
+              <p class="ic-sub">
+                OPEN <span data-key="OPEN_TIME">14:30</span>
+                &nbsp;/&nbsp;
+                START <span data-key="START_TIME">15:00</span>
+              </p>
+            </div>
+          </div>
+          <div class="ic-row ic-venue">
+            <span class="ic-label">VENUE</span>
+            <div class="ic-content">
+              <p class="ic-main" data-key="VENUE_NAME">Live Bar Flat Five</p>
+              <p class="ic-sub" data-key="VENUE_ADDRESS">兵庫県神戸市中央区中山手通2-3-19 B1F</p>
+            </div>
+          </div>
+          <div class="ic-row ic-price">
+            <span class="ic-label">TICKET</span>
+            <div class="ic-content">
+              <p class="ic-main ic-price-val">
+                <span data-key="TICKET_PRICE">¥1,000 / ¥1,500</span>
+                <span class="ic-drink" data-key="TICKET_NOTE">+ 1 Drink</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       SECTION 3: ARTISTS
+       ================================================================ -->
+  <section id="artists">
+    <div class="container">
+
+      <div class="section-header fade-in">
+        <h2 class="section-title">Artists</h2>
+        <p class="section-sub" data-key="EVENT_SUBTITLE">Three Female Vocal Bands in Live</p>
+      </div>
+
+      <div class="artists-grid">
+
+        <!-- ---- Band 1 (green) ---- -->
+        <!-- 差し替え: BAND_1_NAME / BAND_1_TIME / BAND_1_GENRE / BAND_1_DESC(メンバー) / assets/woman1.png -->
+        <article class="artist-card color-green fade-in">
+          <div class="ac-header">
+            <p class="ac-headline">
+              <span class="ac-time" data-key="BAND_1_TIME">15:30</span>
+              <span class="ac-name" data-key="BAND_1_NAME">SYM</span>
+            </p>
+            <p class="ac-genre" data-key="BAND_1_GENRE">Alternative Rock</p>
+          </div>
+          <div class="ac-img-wrap">
+            <!-- data-artist-img="1" → script.js で BAND_1_IMG を自動設定 -->
+            <img src="assets/woman1.png" alt="" class="ac-img" data-artist-img="1">
+          </div>
+          <div class="ac-body">
+            <p class="ac-members" data-key="BAND_1_DESC">Vo.るー / Gt.しみしょう / Gt.のぶや / Ba.こまっきー / Dr.ともみん</p>
+          </div>
+        </article>
+
+        <!-- ---- Band 2 (orange) ---- -->
+        <!-- 差し替え: BAND_2_NAME / BAND_2_TIME / BAND_2_GENRE / BAND_2_DESC(メンバー) / assets/woman2.png -->
+        <article class="artist-card color-orange fade-in">
+          <div class="ac-header">
+            <p class="ac-headline">
+              <span class="ac-time" data-key="BAND_2_TIME">16:30</span>
+              <span class="ac-name" data-key="BAND_2_NAME">Dang爵'z</span>
+            </p>
+            <p class="ac-genre" data-key="BAND_2_GENRE">Rock Music</p>
+          </div>
+          <div class="ac-img-wrap">
+            <img src="assets/woman2.png" alt="" class="ac-img" data-artist-img="2">
+          </div>
+          <div class="ac-body">
+            <p class="ac-members" data-key="BAND_2_DESC">Vo.〇〇 / Gt.〇〇 / Ba.〇〇 / Dr.〇〇</p>
+          </div>
+        </article>
+
+        <!-- ---- Band 3 (teal) ---- -->
+        <!-- 差し替え: BAND_3_NAME / BAND_3_TIME / BAND_3_GENRE / BAND_3_DESC(メンバー) / assets/woman3.png -->
+        <article class="artist-card color-teal fade-in">
+          <div class="ac-header">
+            <p class="ac-headline">
+              <span class="ac-time" data-key="BAND_3_TIME">17:30</span>
+              <span class="ac-name" data-key="BAND_3_NAME">Surpplysic</span>
+            </p>
+            <p class="ac-genre" data-key="BAND_3_GENRE">Pop &amp; Jazz</p>
+          </div>
+          <div class="ac-img-wrap">
+            <img src="assets/woman3.png" alt="" class="ac-img" data-artist-img="3">
+          </div>
+          <div class="ac-body">
+            <p class="ac-members" data-key="BAND_3_DESC">Vo.〇〇 / Gt.〇〇 / Ba.〇〇 / Dr.〇〇</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       SECTION 4: SCHEDULE
+       ================================================================ -->
+  <section id="schedule">
+    <div class="schedule-wrap container">
+
+      <div class="section-header fade-in">
+        <h2 class="section-title color-teal">Schedule</h2>
+      </div>
+
+      <div class="schedule-body fade-in">
+
+        <!-- OPEN / START ヘッダー -->
+        <div class="sch-openrow">
+          <div class="sch-open-block">
+            <span class="sch-badge">OPEN</span>
+            <span class="sch-open-time" data-key="OPEN_TIME">14:30</span>
+          </div>
+          <div class="sch-open-block">
+            <span class="sch-badge">START</span>
+            <span class="sch-open-time" data-key="START_TIME">15:00</span>
+          </div>
+        </div>
+
+        <!-- タイムテーブル -->
+        <div class="sch-table">
+
+          <div class="sch-row color-green">
+            <div class="sch-time" data-key="BAND_1_TIME">15:00</div>
+            <div class="sch-line-dot"></div>
+            <div class="sch-info">
+              <p class="sch-name" data-key="BAND_1_NAME">BandAAA</p>
+              <p class="sch-act">1st Act</p>
+            </div>
+          </div>
+
+          <div class="sch-row color-orange">
+            <div class="sch-time" data-key="BAND_2_TIME">16:00</div>
+            <div class="sch-line-dot"></div>
+            <div class="sch-info">
+              <p class="sch-name" data-key="BAND_2_NAME">BandBBB</p>
+              <p class="sch-act">2nd Act</p>
+            </div>
+          </div>
+
+          <div class="sch-row color-teal">
+            <div class="sch-time" data-key="BAND_3_TIME">17:00</div>
+            <div class="sch-line-dot"></div>
+            <div class="sch-info">
+              <p class="sch-name" data-key="BAND_3_NAME">BandCCC</p>
+              <p class="sch-act">3rd Act</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       SECTION 5: VENUE / ACCESS
+       ================================================================ -->
+  <section id="venue">
+    <div class="venue-inner container">
+
+      <div class="venue-text fade-in">
+        <p class="section-eyebrow" style="color: var(--color-accent-orange);">Venue &amp; Access</p>
+        <h2 class="venue-name" data-key="VENUE_NAME">Live Bar Flat Five</h2>
+
+        <dl class="venue-dl">
+          <div class="vdl-row">
+            <dt>住所</dt>
+            <dd data-key="VENUE_ADDRESS">兵庫県神戸市中央区中山手通2-3-19 B1F</dd>
+          </div>
+          <div class="vdl-row">
+            <dt>アクセス</dt>
+            <dd data-key="ACCESS_TEXT">各線三宮駅 徒歩7分 / 生田署向かいの地下1階</dd>
+          </div>
+          <div class="vdl-row">
+            <dt>道順</dt>
+            <dd data-key="ACCESS_SUB">三宮駅より生田神社方面へ歩き、ドンキホーテのある筋を山側へ徒歩5分</dd>
+          </div>
+        </dl>
+
+        <!-- Google Map リンク: href を差し替えてください -->
+        <a href="https://maps.app.goo.gl/HrpLgjox4knUhCuh6" class="btn btn-maplink">Google Map で開く &rarr;</a>
+      </div>
+
+      <!-- 地図エリア: Google Map の <iframe> に差し替えてください -->
+      <div class="venue-map fade-in" aria-label="地図">
+        <div class="map-placeholder">
+<iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d209946.38761192057!2d134.90882293281246!3d34.69477919999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60008ee22e629733%3A0xdbdb17da5f8d62b7!2z44Op44Kk44OW44OQ44O8IOODleODqeODg-ODiOODleOCoeOCpOODliDkuInlrq7lupc!5e0!3m2!1sja!2sjp!4v1776130549252!5m2!1sja!2sjp"
+  width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       SECTION 6: TICKET
+       ================================================================ -->
+  <section id="ticket">
+    <div class="ticket-inner container">
+
+      <div class="ticket-content fade-in">
+        <p class="section-eyebrow color-orange">Ticket</p>
+
+        <div class="ticket-price-wrap">
+          <!-- TICKET_PRICE -->
+          <p class="ticket-price" data-key="TICKET_PRICE">¥1,000 / ¥1,500</p>
+          <!-- TICKET_DRINK -->
+          <p class="ticket-drink">+1 Drink</p>
+          <!-- TICKET_NOTE -->
+          <p class="ticket-note" data-key="TICKET_NOTE">※事前・当日ともに1ドリンクオーダー制</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer id="footer">
+    <div class="footer-inner container">
+
+      <div class="footer-event">
+        <p class="footer-title" data-key="EVENT_TITLE">Voices in Bloom</p>
+        <ul class="footer-meta">
+          <li data-key="EVENT_DATE">2026.07.26 SUN</li>
+          <li>OPEN <span data-key="OPEN_TIME">15:00</span>
+          <span data-key="START_TIME">15:30</span></li>
+          <li data-key="VENUE_NAME">Live Bar Flat Five</li>
+          <li data-key="VENUE_ADDRESS">兵庫県神戸市中央区中山手通2-3-19 B1F</li>
+        </ul>
+      </div>
+      <p class="footer-copy">&copy; 2026 Voices in Bloom. All rights reserved.</p>
+
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

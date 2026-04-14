@@ -1,0 +1,868 @@
+/* ================================================================
+   VOICES IN BLOOM — styles.css
+   ================================================================ */
+
+/* ----------------------------------------------------------------
+   CSS VARIABLES — 配色・フォント管理
+   色を変更したい場合は :root の値を変更してください
+   ---------------------------------------------------------------- */
+:root {
+  /* --- カラーパレット --- */
+  --color-bg-dark:      #130705;
+  --color-accent-green: #94c835;
+  --color-accent-orange:#ec613f;
+  --color-accent-teal:  #26b4a1;
+  --color-accent-yellow:#fccf03;
+  --color-accent-purple:#a26c92;
+  --color-bg-cream:     #f8f6d9;
+
+  --color-text-on-dark: #f0ebe0;
+  --color-text-on-cream:#1a0a06;
+  --color-text-muted:   rgba(240, 235, 224, 0.55);
+
+  /* --- フォント --- */
+  --font-display: 'Kiwi Maru', serif;
+  --font-cursive: 'Pacifico', cursive;
+  --font-body:    'Kiwi Maru', serif;
+
+  /* --- レイアウト --- */
+  --max-w:        1100px;
+  --section-py:   clamp(4rem, 9vw, 7rem);
+  --px:           clamp(1.25rem, 5vw, 3rem);
+}
+
+/* ================================================================
+   RESET / BASE
+   ================================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html  { scroll-behavior: smooth; }
+body  {
+  background: var(--color-bg-dark);
+  color: var(--color-text-on-dark);
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+img   { display: block; max-width: 100%; }
+a     { color: inherit; text-decoration: none; }
+ul    { list-style: none; }
+
+/* ================================================================
+   UTILITIES
+   ================================================================ */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--px);
+}
+
+/* セクション共通ラベル */
+.section-eyebrow {
+  font-family: var(--font-cursive);
+  font-size: clamp(0.72rem, 1.8vw, 0.88rem);
+  letter-spacing: 0.22em;
+  color: var(--color-accent-green);
+  margin-bottom: 0.6rem;
+}
+
+/* セクション見出し */
+.section-header {
+  text-align: center;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  letter-spacing: 0.04em;
+  color: var(--color-text-on-dark);
+}
+.section-title.color-teal   { color: var(--color-accent-teal); }
+.section-title.color-green  { color: var(--color-accent-green); }
+.section-title.color-orange { color: var(--color-accent-orange); }
+.section-sub {
+  margin-top: 0.4rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+}
+
+/* カラーユーティリティ */
+.color-green  { color: var(--color-accent-green) !important; }
+.color-orange { color: var(--color-accent-orange) !important; }
+.color-teal   { color: var(--color-accent-teal) !important; }
+.color-yellow { color: var(--color-accent-yellow) !important; }
+
+/* ---- BUTTONS ---- */
+.btn {
+  display: inline-block;
+  padding: 0.8em 2.4em;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(0.82rem, 2vw, 0.96rem);
+  letter-spacing: 0.08em;
+  border-radius: 2px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+.btn:hover  { transform: translateY(-2px); opacity: 0.88; }
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+  background: var(--color-accent-green);
+  color: var(--color-bg-dark);
+  border-color: var(--color-accent-green);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--color-accent-green);
+  border-color: var(--color-accent-green);
+}
+.btn-outline:hover { background: rgba(148, 200, 53, 0.08); }
+
+.btn-full { width: 100%; text-align: center; }
+
+/* ---- FADE-IN ---- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================================================================
+   SECTION 1: HERO
+   ================================================================ */
+#hero {
+  position: relative;
+  background: var(--color-bg-dark);
+}
+
+/* ---- ヒーロー画像エリア ---- */
+.hero-img-wrap {
+  position: relative;
+  width: 100%;
+  /* 画像未配置時のフォールバック背景 */
+  background: var(--color-bg-dark);
+  overflow: hidden;
+
+  /* 高さ: vhベース。画像が入ったら aspect-ratio でも可 */
+  height: 90svh;
+  min-height: 480px;
+  max-height: 920px;
+}
+
+/* picture 要素をコンテナに合わせてブロック表示 */
+.hero-img-wrap picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* PC: hero-desktop.png 用。画像の構図に合わせて調整してください */
+  object-position: center center;
+  display: block;
+}
+
+/* hero.png 未配置時のフォールバック表示 */
+.hero-fallback {
+  position: absolute;
+  inset: 0;
+  display: none;          /* hero.png が読み込まれれば非表示 */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--px);
+  /* top カラーライン */
+  border-top: 5px solid transparent;
+  border-image: linear-gradient(
+    90deg,
+    var(--color-accent-green)  0%   25%,
+    var(--color-accent-orange) 25%  50%,
+    var(--color-accent-teal)   50%  75%,
+    var(--color-accent-yellow) 75% 100%
+  ) 1;
+}
+
+/* img 読み込み失敗時: 画像を非表示（フォールバック表示は JS で処理） */
+.hero-img.img-error {
+  opacity: 0;
+}
+
+.hf-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 14vw, 11rem);
+  line-height: 0.95;
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-green) 0%,
+    var(--color-accent-teal) 40%,
+    var(--color-accent-orange) 70%,
+    var(--color-accent-yellow) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hf-title em {
+  font-style: normal;
+  font-family: var(--font-cursive);
+  font-size: 0.55em;
+  color: var(--color-accent-purple);
+  -webkit-text-fill-color: var(--color-accent-purple);
+  display: block;
+}
+.hf-sub {
+  margin-top: 1.5rem;
+  font-family: var(--font-cursive);
+  font-size: clamp(0.8rem, 2.5vw, 1.1rem);
+  color: var(--color-accent-purple);
+  letter-spacing: 0.1em;
+}
+
+/* ---- イベント情報バー ---- */
+.hero-infobar {
+  background: var(--color-bg-dark);
+  border-top: 4px solid transparent;
+  border-image: linear-gradient(
+    90deg,
+    var(--color-accent-green)  0%   25%,
+    var(--color-accent-orange) 25%  50%,
+    var(--color-accent-teal)   50%  75%,
+    var(--color-accent-yellow) 75% 100%
+  ) 1;
+  padding: clamp(1.25rem, 3vw, 2rem) var(--px);
+}
+
+.infobar-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+  flex-wrap: wrap;
+}
+
+.infobar-main {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 2.5vw, 2rem);
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.ib-sep {
+  width: 1px;
+  height: 2.5rem;
+  background: rgba(255,255,255,0.12);
+  flex-shrink: 0;
+}
+
+.ib-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.ib-label {
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.ib-value {
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 2.2vw, 1.25rem);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.ib-date .ib-value  { color: var(--color-accent-yellow); }
+.ib-time .ib-value  { color: var(--color-text-on-dark); }
+.ib-venue .ib-value { color: var(--color-accent-teal); }
+.ib-ticket .ib-value { color: var(--color-accent-orange); }
+
+.ib-note {
+  font-family: var(--font-body);
+  font-size: 0.72em;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin-left: 0.25em;
+}
+
+/* ================================================================
+   SECTION 2: ABOUT
+   ================================================================ */
+#about {
+  background: var(--color-bg-cream);
+  color: var(--color-text-on-cream);
+  padding: var(--section-py) var(--px);
+}
+
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.about-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4.5vw, 3rem);
+  line-height: 1.2;
+  color: var(--color-text-on-cream);
+  margin-bottom: 1.25rem;
+}
+
+.about-body {
+  font-size: clamp(0.86rem, 1.6vw, 0.96rem);
+  line-height: 1.9;
+  color: #3a1a10;
+}
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.tag {
+  display: inline-block;
+  padding: 0.28em 0.9em;
+  border: 1.5px solid rgba(26,10,6,0.3);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-text-on-cream);
+  border-radius: 2px;
+}
+
+/* ---- 情報カード ---- */
+.info-card {
+  background: var(--color-bg-dark);
+  color: var(--color-text-on-dark);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ic-row {
+  border-left: 3px solid;
+  padding-left: 1rem;
+}
+.ic-date  { border-color: var(--color-accent-yellow); }
+.ic-venue { border-color: var(--color-accent-teal); }
+.ic-price { border-color: var(--color-accent-orange); }
+
+.ic-label {
+  display: block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.ic-main {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  line-height: 1.3;
+}
+.ic-date  .ic-main { color: var(--color-accent-yellow); }
+.ic-venue .ic-main { color: var(--color-accent-teal); }
+
+.ic-sub {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+}
+
+.ic-price-val {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4em;
+}
+.ic-price-val span:first-child {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 5vw, 2.5rem);
+  color: var(--color-accent-orange);
+}
+.ic-drink {
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+/* ================================================================
+   SECTION 3: ARTISTS
+   ================================================================ */
+#artists {
+  background: var(--color-bg-dark);
+  padding: var(--section-py) var(--px);
+}
+
+.artists-grid {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+}
+
+/* ---- アーティストカード ---- */
+.artist-card {
+  background: #1c0b07;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.22s ease;
+}
+.artist-card:hover { transform: translateY(-5px); }
+
+/* 上部カラーライン */
+.artist-card::before {
+  content: '';
+  display: block;
+  height: 4px;
+}
+.color-green::before  { background: var(--color-accent-green); }
+.color-orange::before { background: var(--color-accent-orange); }
+.color-teal::before   { background: var(--color-accent-teal); }
+
+/* ---- カード上部ヘッダー（時間・バンド名・ジャンル） ---- */
+.ac-header {
+  padding: 1.1rem 1.25rem 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.ac-headline {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+  margin-bottom: 0.3rem;
+}
+.ac-time {
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  letter-spacing: 0.06em;
+  opacity: 0.75;
+}
+.color-green  .ac-time { color: var(--color-accent-green); }
+.color-orange .ac-time { color: var(--color-accent-orange); }
+.color-teal   .ac-time { color: var(--color-accent-teal); }
+
+.ac-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3.2vw, 1.8rem);
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+}
+.color-green  .ac-name { color: var(--color-accent-green); }
+.color-orange .ac-name { color: var(--color-accent-orange); }
+.color-teal   .ac-name { color: var(--color-accent-teal); }
+
+.ac-genre {
+  font-size: clamp(0.72rem, 1.8vw, 0.82rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(240, 235, 224, 0.45);
+}
+
+/* ---- 写真 ---- */
+.ac-img-wrap {
+  /* position: relative 不要になったが念のため残す */
+}
+.ac-img-wrap {
+  display: flex;
+  justify-content: center;
+}
+.ac-img {
+  width: 70%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: filter 0.4s ease;
+}
+/* カラーフィルター: バンドごとにトーン差別化 */
+/* .color-green  .ac-img { filter: grayscale(20%) sepia(35%) hue-rotate(40deg) saturate(1.5) brightness(0.9); }
+.color-orange .ac-img { filter: grayscale(20%) sepia(50%) hue-rotate(340deg) saturate(1.6) brightness(0.9); }
+.color-teal   .ac-img { filter: grayscale(20%) sepia(40%) hue-rotate(130deg) saturate(1.5) brightness(0.9); } */
+.artist-card:hover .ac-img { filter: grayscale(0%) brightness(1); }
+
+/* ---- カード下部（メンバー） ---- */
+.ac-body {
+  padding: 0.9rem 1.25rem 1.25rem;
+  flex: 1;
+}
+.ac-members {
+  font-size: clamp(0.75rem, 1.9vw, 0.85rem);
+  line-height: 1.8;
+  color: rgba(240, 235, 224, 0.6);
+  letter-spacing: 0.02em;
+}
+
+/* ================================================================
+   SECTION 4: SCHEDULE
+   ================================================================ */
+#schedule {
+  background: #0d1a16;
+  padding: var(--section-py) var(--px);
+  border-top: 1px solid rgba(38, 180, 161, 0.15);
+  border-bottom: 1px solid rgba(38, 180, 161, 0.15);
+}
+
+.schedule-wrap { max-width: 640px; }
+
+/* OPEN / START */
+.sch-openrow {
+  display: flex;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.sch-open-block {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.sch-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(240,235,224,0.45);
+  border: 1.5px solid rgba(255,255,255,0.2);
+  padding: 0.2em 0.65em;
+  white-space: nowrap;
+}
+.sch-open-time {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4.5vw, 2.4rem);
+  color: var(--color-accent-teal);
+  letter-spacing: 0.03em;
+}
+
+/* タイムテーブル */
+.sch-table {
+  display: flex;
+  flex-direction: column;
+}
+.sch-row {
+  display: grid;
+  grid-template-columns: 5rem 1.5rem 1fr;
+  gap: 0 1rem;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.sch-row:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+
+.sch-time {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  text-align: right;
+  line-height: 1;
+}
+.sch-row.color-green  .sch-time { color: var(--color-accent-green); }
+.sch-row.color-orange .sch-time { color: var(--color-accent-orange); }
+.sch-row.color-teal   .sch-time { color: var(--color-accent-teal); }
+
+.sch-line-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  justify-self: center;
+}
+.sch-row.color-green  .sch-line-dot { background: var(--color-accent-green); }
+.sch-row.color-orange .sch-line-dot { background: var(--color-accent-orange); }
+.sch-row.color-teal   .sch-line-dot { background: var(--color-accent-teal); }
+
+.sch-name {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  letter-spacing: 0.02em;
+}
+.sch-row.color-green  .sch-name { color: var(--color-accent-green); }
+.sch-row.color-orange .sch-name { color: var(--color-accent-orange); }
+.sch-row.color-teal   .sch-name { color: var(--color-accent-teal); }
+
+.sch-act {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-top: 0.1rem;
+}
+
+/* ================================================================
+   SECTION 5: VENUE
+   ================================================================ */
+#venue {
+  background: var(--color-bg-cream);
+  color: var(--color-text-on-cream);
+  padding: var(--section-py) var(--px);
+}
+
+.venue-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.venue-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: var(--color-text-on-cream);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.venue-dl {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-bottom: 1.75rem;
+}
+.vdl-row {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 0.75rem;
+  align-items: baseline;
+  font-size: clamp(0.82rem, 1.6vw, 0.92rem);
+}
+.vdl-row dt {
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: rgba(26,10,6,0.5);
+  padding-top: 0.1em;
+}
+.vdl-row dd { line-height: 1.7; color: #3a1a10; }
+
+.btn-maplink {
+  display: inline-block;
+  background: var(--color-bg-dark);
+  color: var(--color-bg-cream);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.6em 1.75em;
+  border-radius: 2px;
+  transition: opacity 0.15s;
+}
+.btn-maplink:hover { opacity: 0.75; }
+
+/* 地図エリア */
+.venue-map {
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  min-height: 240px;
+}
+.map-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #d9d4b8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: #6b5040;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+.map-placeholder {
+  padding: 0;
+  background: none;
+}
+
+.map-placeholder iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.map-placeholder-icon { font-size: 2.5rem; }
+
+/* ================================================================
+   SECTION 6: TICKET
+   ================================================================ */
+#ticket {
+  background: var(--color-bg-dark);
+  padding: var(--section-py) var(--px);
+  border-top: 4px solid var(--color-accent-orange);
+  text-align: center;
+}
+
+.ticket-inner { max-width: 640px; }
+
+.ticket-price-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2em;
+  margin: 1rem 0 2.5rem;
+}
+.ticket-price {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 14vw, 7.5rem);
+  color: var(--color-accent-yellow);
+  line-height: 1;
+}
+.ticket-drink {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 5vw, 2.5rem);
+  color: var(--color-accent-orange);
+  line-height: 1.2;
+}
+.ticket-note {
+  font-size: clamp(0.75rem, 2.5vw, 0.88rem);
+  color: var(--color-text-muted);
+  margin-top: 0.3em;
+  line-height: 1.6;
+}
+.ticket-cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-cta-main {
+  background: var(--color-accent-orange);
+  color: #fff;
+  border-color: var(--color-accent-orange);
+  font-size: clamp(0.88rem, 2.5vw, 1rem);
+  padding: 0.9em 3em;
+}
+.btn-cta-main:hover { background: #d4522f; border-color: #d4522f; }
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+#footer {
+  background: #090302;
+  padding: clamp(2.5rem, 6vw, 4rem) var(--px);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: start;
+}
+
+.footer-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  letter-spacing: 0.04em;
+  color: var(--color-text-on-dark);
+  margin-bottom: 0.5rem;
+}
+.footer-meta {
+  font-size: 0.8rem;
+  line-height: 2;
+  color: var(--color-text-muted);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.55rem;
+}
+.footer-link {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: rgba(240,235,224,0.4);
+  transition: color 0.15s;
+}
+.footer-link:hover { color: var(--color-accent-green); }
+
+.footer-copy {
+  grid-column: 1 / -1;
+  font-size: 0.7rem;
+  color: rgba(240,235,224,0.25);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 1.25rem;
+  margin-top: 1rem;
+}
+
+/* ================================================================
+   RESPONSIVE — Tablet (≤ 900px)
+   ================================================================ */
+@media (max-width: 900px) {
+  .hero-img-wrap {
+    height: 80svh;
+    max-height: 700px;
+  }
+  /* hero-desktop.png はタブレットでもそのまま使用。
+     構図が合わない場合は object-position を調整してください */
+
+  .about-inner   { grid-template-columns: 1fr; }
+  .venue-inner   { grid-template-columns: 1fr; }
+  .artists-grid  { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+
+  .ib-sep { display: none; }
+  .infobar-main { gap: 1rem; }
+}
+
+/* ================================================================
+   RESPONSIVE — Mobile (≤ 600px)
+   ================================================================ */
+@media (max-width: 600px) {
+  .hero-img-wrap {
+    height: 75svh;
+    min-height: 360px;
+    max-height: 600px;
+  }
+  /* hero-mobile.png はスマホ専用構図のため object-position 調整不要。
+     もし微調整が必要な場合: .hero-img { object-position: center top; } */
+
+  .hero-infobar {
+    padding: 1.25rem var(--px);
+  }
+  .infobar-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .infobar-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 1.25rem;
+  }
+  .ib-sep { display: none; }
+  .ib-value { font-size: clamp(0.9rem, 4vw, 1.1rem); white-space: normal; }
+  .infobar-inner .btn { width: 100%; text-align: center; }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+  .footer-links { align-items: flex-start; flex-direction: row; flex-wrap: wrap; gap: 0.75rem 1.5rem; }
+
+  .schedule-wrap { max-width: 100%; }
+  .sch-row {
+    grid-template-columns: 4rem 1rem 1fr;
+    gap: 0 0.75rem;
+  }
+}
