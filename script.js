@@ -17,7 +17,7 @@ const EVENT_DATA = {
 
   // チケット（事前/当日あるので調整）
   TICKET_PRICE: "事前 ¥1,000<br>当日 ¥1,500",
-  TICKET_NOTE: "+1 Drink",
+  TICKET_NOTE: "+1 Drink（共通）",
 
   // -------- バンド --------
   BAND_1_NAME: "SYM",

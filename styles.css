@@ -298,8 +298,15 @@ ul    { list-style: none; }
 .ib-date .ib-value  { color: var(--color-accent-yellow); }
 .ib-time .ib-value  { color: var(--color-text-on-dark); }
 .ib-venue .ib-value { color: var(--color-accent-teal); }
-.ib-ticket .ib-value { color: var(--color-accent-orange); }
-.ib-ticket [data-key="TICKET_PRICE"] { line-height: 1.4; }
+.ib-ticket .ib-value {
+  color: var(--color-accent-orange);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2em;
+  white-space: normal;
+}
+.ib-ticket [data-key="TICKET_PRICE"] { line-height: 1.2; }
 
 .ib-note {
   font-family: var(--font-body);
@@ -308,6 +315,7 @@ ul    { list-style: none; }
   color: var(--color-text-muted);
   margin-left: 0.25em;
 }
+.ib-ticket .ib-note { margin-left: 0; }
 
 /* ================================================================
    SECTION 2: ABOUT
@@ -400,14 +408,15 @@ ul    { list-style: none; }
 
 .ic-price-val {
   display: flex;
-  align-items: baseline;
-  gap: 0.4em;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
 }
-.ic-price-val [data-key="TICKET_PRICE"] { line-height: 1.4; }
-.ic-price-val span:first-child {
+.ic-price-val [data-key="TICKET_PRICE"] {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 5vw, 2.5rem);
   color: var(--color-accent-orange);
+  line-height: 1.2;
 }
 .ic-drink {
   font-size: 0.85rem;
@@ -868,6 +877,8 @@ ul    { list-style: none; }
     height: 75svh;
     min-height: 360px;
     max-height: 600px;
+    padding: 0;
+    max-width: 100%;
   }
   /* hero-mobile.png はスマホ専用構図のため object-position 調整不要。
      もし微調整が必要な場合: .hero-img { object-position: center top; } */
